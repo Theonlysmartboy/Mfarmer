@@ -1,3 +1,4 @@
+@extends('layouts.adminLayout.admin_design')
 @section('content')
 <div id="content">
     <!--breadcrumbs-->
@@ -61,19 +62,19 @@
                     <div class="widget-content nopadding collapse in" id="collapseG2">
                         <ul class="recent-posts">
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av1.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av1.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
                                     <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
                                 </div>
                             </li>
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av2.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av2.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
                                     <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
                                 </div>
                             </li>
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av4.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av4.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
                                     <p><a href="#">This is a much longer one that will go on for a few lines.Itaffle to pad out the comment.</a> </p>
                                 </div>
@@ -172,11 +173,11 @@
                             </div>
                             <div class="panel-content nopadding">
                                 <ul class="contact-list">
-                                    <li id="user-Alex" class="online"><a href=""><img alt="" src="img/demo/av1.jpg" /> <span>Alex</span></a></li>
-                                    <li id="user-Linda"><a href=""><img alt="" src="img/demo/av2.jpg" /> <span>Linda</span></a></li>
-                                    <li id="user-John" class="online new"><a href=""><img alt="" src="img/demo/av3.jpg" /> <span>John</span></a><span class="msg-count badge badge-info">3</span></li>
-                                    <li id="user-Mark" class="online"><a href=""><img alt="" src="img/demo/av4.jpg" /> <span>Mark</span></a></li>
-                                    <li id="user-Maxi" class="online"><a href=""><img alt="" src="img/demo/av5.jpg" /> <span>Maxi</span></a></li>
+                                    <li id="user-Alex" class="online"><a href=""><img alt="" src="{{asset('images/backend_images/demo/av1.jpg')}}" /> <span>Alex</span></a></li>
+                                    <li id="user-Linda"><a href=""><img alt="" src="{{asset('images/backend_images/demo/av2.jpg')}}" /> <span>Linda</span></a></li>
+                                    <li id="user-John" class="online new"><a href=""><img alt="" src="{{asset('images/backend_images/demo/av3.jpg')}}" /> <span>John</span></a><span class="msg-count badge badge-info">3</span></li>
+                                    <li id="user-Mark" class="online"><a href=""><img alt="" src="{{asset('images/backend_images/demo/av4.jpg')}}" /> <span>Mark</span></a></li>
+                                    <li id="user-Maxi" class="online"><a href=""><img alt="" src="{{asset('images/backend_images/demo/av5.jpg')}}" /> <span>Maxi</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -199,19 +200,19 @@
                     <div class="widget-content nopadding fix_hgt">
                         <ul class="recent-posts">
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av1.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av1.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info">John Deo</span>
                                     <p>Web Desginer &amp; creative Front end developer</p>
                                 </div>
                             </li>
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av2.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av2.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info">John Deo</span>
                                     <p>Web Desginer &amp; creative Front end developer</p>
                                 </div>
                             </li>
                             <li>
-                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="img/demo/av4.jpg"> </div>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="{{asset('images/backend_images/demo/av4.jpg')}}"> </div>
                                 <div class="article-post"> <span class="user-info">John Deo</span>
                                     <p>Web Desginer &amp; creative Front end developer</p>
                                 </div>
@@ -281,13 +282,13 @@
                     <div class="widget-content tab-content">
                         <div id="tab1" class="tab-pane active">
                             <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment.</p>
-                            <img src="img/demo/demo-image1.jpg" alt="demo-image"/></div>
-                        <div id="tab2" class="tab-pane"> <img src="img/demo/demo-image2.jpg" alt="demo-image"/>
+                            <img src="{{asset('images/backend_images/demo/demo-image1.jpg')}}" alt="demo-image"/></div>
+                        <div id="tab2" class="tab-pane"> <img src="{{asset('images/backend_images/demo/demo-image2.jpg')}}" alt="demo-image"/>
                             <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment.</p>
                         </div>
                         <div id="tab3" class="tab-pane">
                             <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.multiple paragraphs and is full of waffle to pad out the comment. </p>
-                            <img src="img/demo/demo-image3.jpg" alt="demo-image"/></div>
+                            <img src="{{asset('images/backend_images/demo/demo-image3.jpg')}}" alt="demo-image"/></div>
                     </div>
                 </div>
             </div>
