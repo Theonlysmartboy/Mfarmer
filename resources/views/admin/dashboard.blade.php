@@ -9,6 +9,12 @@
 
     <!--Action boxes-->
     <div class="container-fluid">
+        @if(Session::has('flash_message_success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>	
+                <strong>{!!session('flash_message_success')!!}</strong>
+            </div>
+            @endif
         <div class="quick-actions_homepage">
             <ul class="quick-actions">
                 <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
