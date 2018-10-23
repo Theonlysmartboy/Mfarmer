@@ -29,11 +29,17 @@ class AdminController extends Controller {
     }
 
     public function dashboard() {
-        if (Session::has('adminSession')) {
+        /*if (Session::has('adminSession')) {*/
             return view('admin.dashboard');
-        } else {
-            return redirect('/admin')->with('flash_message_error', 'Please Login first');
-        }
+        /*} else {
+            return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
+        }*/
+    }
+    public function settings(Request $request) {
+         if ($request->isMethod('post')) {
+            $data = $request->input();
+         }
+         return view('admin.settings');
     }
 
     public function logout() {
