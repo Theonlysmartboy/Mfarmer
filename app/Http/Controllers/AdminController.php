@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
@@ -42,6 +44,23 @@ class AdminController extends Controller {
                 $data = $request->input();
             } else {
                 return view('admin.settings');
+            }
+        } else {
+            return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
+        }
+    }
+
+    public function chkPassword(Request $request) {
+        if (Session::has('adminSession')) {
+            $data = $request->all();
+            $current_password = $data['current_pwd'];
+            $check_password = User::where(['role' => '1'])->first();
+            if (Hash::check($current_password, $check_password->password)) {
+                echo "true";
+                die;
+            } else {
+                echo "false";
+                die;
             }
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');

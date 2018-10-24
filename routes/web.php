@@ -18,5 +18,6 @@ Route::match(['get', 'post'], '/admin', 'AdminController@login');
 Route::match(['get', 'post'], '/admin/settings', 'AdminController@settings');
 Route::get('/logout', 'AdminController@logout');
 Route::get('/admin/dashboard', 'AdminController@dashboard');
+Route::get('/admin/check-pwd','AdminController@chkPassword');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
