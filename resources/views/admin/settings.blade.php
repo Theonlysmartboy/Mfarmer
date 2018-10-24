@@ -14,21 +14,27 @@
                         <h5>Security validation</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post" action="{{url('admin/settings')}}" name="password_validate" id="password_validate" novalidate="novalidate">
-                            <div class="control-group">
-                                <label class="control-label">Password</label>
+                        <form class="form-horizontal" method="post" action="{{url('admin/settings')}}" name="password_validate" id="password_validate" novalidate="novalidate">{{ csrf_field() }}
+                             <div class="control-group">
+                                <label class="control-label">Current Password</label>
                                 <div class="controls">
-                                    <input type="password" name="pwd" id="pwd" />
+                                    <input type="password" name="current_pwd" id="current_pwd" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">New Password</label>
+                                <div class="controls">
+                                    <input type="password" name="new_pwd" id="new_pwd" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Confirm password</label>
                                 <div class="controls">
-                                    <input type="password" name="pwd2" id="pwd2" />
+                                    <input type="password" name="confirm_pwd" id="confirm_pwd" />
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <input type="submit" value="Validate" class="btn btn-success">
+                                <input type="submit" value="Update Password" class="btn btn-success">
                             </div>
                         </form>
                     </div>

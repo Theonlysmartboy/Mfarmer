@@ -16,30 +16,36 @@ class AdminController extends Controller {
                 //Load the admin dashboard
                 Session::put('adminSession', $data['email']);
                 return redirect('/admin/dashboard')->with('flash_message_success', 'Login Successfull');
-                } else if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'role' => '0'])) {
+            } else if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'role' => '0'])) {
                 echo "Login Successfull for User";
                 die;
             } else {
                 return redirect('/admin')->with('flash_message_error', 'Invalid Email Or password');
             }
         } elseif (Session::has('adminSession')) {
-        return redirect('/admin/dashboard')->with('flash_message_success', 'Login Successfull');
+            return redirect('/admin/dashboard')->with('flash_message_success', 'Login Successfull');
         }
         return view('admin.admin_login');
     }
 
     public function dashboard() {
-        /*if (Session::has('adminSession')) {*/
+        if (Session::has('adminSession')) {
             return view('admin.dashboard');
-        /*} else {
+        } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
-        }*/
+        }
     }
+
     public function settings(Request $request) {
-         if ($request->isMethod('post')) {
-            $data = $request->input();
-         }
-         return view('admin.settings');
+        if (Session::has('adminSession')) {
+            if ($request->isMethod('post')) {
+                $data = $request->input();
+            } else {
+                return view('admin.settings');
+            }
+        } else {
+            return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
+        }
     }
 
     public function logout() {

@@ -1,10 +1,7 @@
-<!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">MFarmer Dashboard</a></h1>
+  <h1><a href="{{url('admin/dashboard')}}">MFarmer Dashboard</a></h1>
 </div>
 <!--close-Header-part--> 
-
-
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
