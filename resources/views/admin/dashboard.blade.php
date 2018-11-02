@@ -6,7 +6,6 @@
         <div id="breadcrumb"> <a href="{{url('admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
     </div>
     <!--End-breadcrumbs-->
-
     <!--Action boxes-->
     <div class="container-fluid">
         @if(Session::has('flash_message_success'))
@@ -17,7 +16,7 @@
             @endif
         <div class="quick-actions_homepage">
             <ul class="quick-actions">
-                <li class="bg_lb"> <a href="{{url('admin')}}"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
+                <li class="bg_lb"> <a href="{{url('admin/dashboard')}}"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
                 <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-signal"></i> Charts</a> </li>
                 <li class="bg_ly"> <a href="widgets.html"> <i class="icon-inbox"></i><span class="label label-success">101</span> Widgets </a> </li>
                 <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>

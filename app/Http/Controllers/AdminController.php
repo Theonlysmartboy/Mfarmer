@@ -38,13 +38,9 @@ class AdminController extends Controller {
         }
     }
 
-    public function settings(Request $request) {
+    public function settings() {
         if (Session::has('adminSession')) {
-            if ($request->isMethod('post')) {
-                $data = $request->input();
-            } else {
-                return view('admin.settings');
-            }
+            return view('admin.settings');
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
@@ -61,6 +57,27 @@ class AdminController extends Controller {
             } else {
                 echo "false";
                 die;
+            }
+        } else {
+            return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
+        }
+    }
+
+    public function updatePassword(Request $request) {
+        if (Session::has('adminSession')) {
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+                $check_password = User::where(['email' => Auth::user()->email])->first();
+                $current_password = $data['current_pwd'];
+                $email = Auth::user()->email;
+                if (Hash::check($current_password, $check_password->password)) {
+                    $password = bcrypt($data['new_pwd']);
+                    User::where('email', $email)->update(['password' => $password]);
+                    Session::flush();
+                    return redirect('/admin')->with('flash_message_success', 'Password Updated Successfully');
+                } else {
+                    return redirect('/admin/settings')->with('flash_message_error', 'An error occured Please try again');
+                }
             }
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
