@@ -1,22 +1,22 @@
 
 $(document).ready(function () {
-$("#new_pwd").click(function(){
-    var current_pwd = $("#current_pwd").val();
-    $.ajax({
-        type:'get',
-        url:'/admin/check-pwd',
-        data:{current_pwd:current_pwd},
-        success:function(resp){
-            if(resp==="false"){
-                $("#chkPwd").html("<font color='red' size='5'>&#10005;</font>");
-            }else if(resp==="true"){
-                $("#chkPwd").html("<font color='green' size='6'>&#10003;</font>");
+    $("#new_pwd").click(function () {
+        var current_pwd = $("#current_pwd").val();
+        $.ajax({
+            type: 'get',
+            url: '/admin/check-pwd',
+            data: {current_pwd: current_pwd},
+            success: function (resp) {
+                if (resp === "false") {
+                    $("#chkPwd").html("<font color='red' size='5'>&#10005;</font>");
+                } else if (resp === "true") {
+                    $("#chkPwd").html("<font color='green' size='6'>&#10003;</font>");
+                }
+            }, error: function () {
+                alert("error");
             }
-        },error:function(){
-            alert("error");
-        }
+        });
     });
-});
     $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
     $('select').select2();
@@ -50,7 +50,29 @@ $("#new_pwd").click(function(){
             $(element).parents('.control-group').addClass('success');
         }
     });
-
+    // Add category Validation
+    $("#add_category").validate({
+        rules: {
+            category_name: {
+                required: true
+            },
+            description: {
+                required: true,
+            },
+            url: {
+                required: true,
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
+    });
     $("#number_validate").validate({
         rules: {
             min: {
