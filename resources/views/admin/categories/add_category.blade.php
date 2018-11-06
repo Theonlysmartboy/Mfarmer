@@ -29,12 +29,22 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">Category Level</label>
+                                <div class="controls">
+                                    <select name="parent_id" style="width: 220px;">
+                                        <option value="0">Main Category</option>
+                                        @foreach($levels as $level)
+                                        <option value="{{$level->id}}">{{$level->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Description</label>
                                 <div class="controls">
                                     <textarea name="description" id="description"></textarea>
                                 </div>
                             </div> 
-
                             <div class="control-group">
                                 <label class="control-label">URL</label>
                                 <div class="controls">

@@ -150,10 +150,27 @@ $(document).ready(function () {
             $(element).parents('.control-group').addClass('success');
         }
     });
-    $("#delCat").click(function(){
-        if(confirm('Are you sure you want to delete this category?')){
-            return true;
-        }
-        return false;
+    /*$('.delCat').click(function(){
+     if(confirm('Are you sure you want to delete this category?')){
+     return true;
+     }
+     return false;
+     });*/
+
+    $(".deleteRecord").click(function () {
+        var id = $(this).attr('rel');
+        var deleteFunction = $(this).attr('rel1');
+        swal({
+            title: "Are you sure You want to delete this category?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FF0000",
+            cancelButtonColor: "#87CEFA",
+            confirmButtonText: "Yes, delete it!"
+        },
+                function () {
+                    window.location.href = "/admin/" + deleteFunction + "/" + id;
+                });
     });
 });

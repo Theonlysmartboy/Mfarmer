@@ -18,6 +18,5 @@ Route::match(['get', 'post'], '/admin/add_category', 'CategoryController@addCate
 Route::get('/admin/view_categories', 'CategoryController@viewCategories');
 Route::match(['get', 'post'], '/admin/edit_category/{id}', 'CategoryController@editCategory');
 Route::match(['get', 'post'], '/admin/delete_category/{id}', 'CategoryController@deleteCategory');
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

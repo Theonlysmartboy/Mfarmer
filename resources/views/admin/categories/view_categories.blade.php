@@ -32,6 +32,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>NAME</th>
+                                    <th>PARENT ID</th>
                                     <th>DESCRIPTION</th>
                                     <th>URL</th>
                                     <th>ACTION</th>
@@ -42,11 +43,12 @@
                                 <tr class="gradeX">
                                     <td class="center">{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td class="center">{{ $category->parent_id }}</td>
                                     <td class="center">{{ $category->description }}</td>
                                     <td>{{ $category->url }}</td>
                                     <td><a href="#" class="btn btn-success btn-mini">View <i class="icon icon-eye-open"></i></a> | 
                                         <a href="{{url('admin/edit_category/'.$category->id)}}" class="btn btn-warning btn-mini">Edit <i class="icon icon-edit"></i></a> | 
-                                        <a id="delCat"href="{{url('admin/delete_category/'.$category->id)}}" class="btn btn-danger btn-mini">Delete <i class="icon icon-trash"></i></a></td>
+                                        <a rel="{{$category->id}}" rel1="delete_category" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete <i class="icon icon-trash"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
