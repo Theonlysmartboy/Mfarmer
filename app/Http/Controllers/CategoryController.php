@@ -50,13 +50,13 @@ class CategoryController extends Controller {
         }
     }
 
-    public function deleteCategory(Request $request, $id = null) {
+    public function deleteCategory($id = null) {
         //Only authenticated users can make calls to this function
         if (Session::has('adminSession')) {
-            if ($request->isMethod('post')) {
-                $data = $request->all();
+            if (!empty($id)) {
+                Category::where(['id' => $id])->delete();
+                return redirect()->back()->with('flash_message_success', 'Category Deleted Successfully');
             }
-            return view('admin.categories.delete_category');
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
