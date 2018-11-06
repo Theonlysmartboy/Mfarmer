@@ -56,10 +56,10 @@ $(document).ready(function () {
                 required: true
             },
             description: {
-                required: true,
+                required: true
             },
             url: {
-                required: true,
+                required: true
             }
         },
         errorClass: "help-inline",
@@ -79,10 +79,10 @@ $(document).ready(function () {
                 required: true
             },
             description: {
-                required: true,
+                required: true
             },
             url: {
-                required: true,
+                required: true
             }
         },
         errorClass: "help-inline",
@@ -149,5 +149,11 @@ $(document).ready(function () {
             $(element).parents('.control-group').removeClass('error');
             $(element).parents('.control-group').addClass('success');
         }
+    });
+    $("#delCat").click(function(){
+        if(confirm('Are you sure you want to delete this category?')){
+            return true;
+        }
+        return false;
     });
 });
