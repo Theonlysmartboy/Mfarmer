@@ -70,14 +70,11 @@ class AdminController extends Controller {
                 $check_password = User::where(['email' => Auth::user()->email])->first();
                 $current_password = $data['current_pwd'];
                 $email = Auth::user()->email;
-                if (Hash::check($current_password, $check_password->password)) {
-                    $password = bcrypt($data['new_pwd']);
-                    User::where('email', $email)->update(['password' => $password]);
-                    Session::flush();
-                    return redirect('/admin')->with('flash_message_success', 'Password Updated Successfully');
-                } else {
-                    return redirect('/admin/settings')->with('flash_message_error', 'An error occured Please try again');
-                }
+                Hash::check($current_password, $check_password->password);
+                $password = bcrypt($data['new_pwd']);
+                User::where('email', $email)->update(['password' => $password]);
+                Session::flush();
+                return redirect('/admin')->with('flash_message_success', 'Password Updated Successfully');
             }
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
