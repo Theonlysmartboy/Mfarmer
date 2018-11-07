@@ -150,7 +150,8 @@ $(document).ready(function () {
             $(element).parents('.control-group').addClass('success');
         }
     });
-    $(".deleteRecord").click(function () {
+    //Function to delete CATEGORY
+    $(".deleteCategory").click(function () {
         var id = $(this).attr('rel');
         var deleteFunction = $(this).attr('rel1');
         swal({
