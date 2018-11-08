@@ -18,5 +18,10 @@ Route::match(['get', 'post'], '/admin/add_category', 'CategoryController@addCate
 Route::get('/admin/view_categories', 'CategoryController@viewCategories');
 Route::match(['get', 'post'], '/admin/edit_category/{id}', 'CategoryController@editCategory');
 Route::match(['get', 'post'], '/admin/delete_category/{id}', 'CategoryController@deleteCategory');
+//Products Routes
+Route::match(['get', 'post'], '/admin/add_product', 'ProductsController@addProduct');
+Route::get('/admin/view_products', 'ProductsController@viewProducts');
+Route::match(['get', 'post'], '/admin/edit_product/{id}', 'ProductsController@editProduct');
+Route::match(['get', 'post'], '/admin/delete_product/{id}', 'ProductsController@deleteProduct');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
