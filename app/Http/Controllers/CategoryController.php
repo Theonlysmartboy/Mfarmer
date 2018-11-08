@@ -9,7 +9,6 @@ use Session;
 class CategoryController extends Controller {
 
     public function addCategory(Request $request) {
-
         if (Session::has('adminSession')) {
             if ($request->isMethod('post')) {
                 $data = $request->all();
@@ -21,7 +20,7 @@ class CategoryController extends Controller {
                 $category->save();
                 return redirect('/admin/view_categories')->with('flash_message_success', 'Category added Successfully');
             }
-            $levels = Category::where(['parent_id'=>0])->get();
+            $levels = Category::where(['parent_id' => 0])->get();
             return view('admin.categories.add_category')->with(compact('levels'));
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
@@ -42,12 +41,12 @@ class CategoryController extends Controller {
         if (Session::has('adminSession')) {
             if ($request->isMethod('post')) {
                 $data = $request->all();
-                Category::where(['id' => $id])->update(['name' => $data['category_name'], 'parent_id'=> $data['parent_id'], 'description' => $data['description'], 'url' => $data['url']]);
+                Category::where(['id' => $id])->update(['name' => $data['category_name'], 'parent_id' => $data['parent_id'], 'description' => $data['description'], 'url' => $data['url']]);
                 return redirect('/admin/view_categories')->with('flash_message_success', 'Category updated Successfully');
             }
             $categoriesDetails = Category::where(['id' => $id])->first();
-            $levels = Category::where(['parent_id'=>0])->get();
-            return view('admin.categories.edit_category')->with(compact('categoriesDetails','levels'));
+            $levels = Category::where(['parent_id' => 0])->get();
+            return view('admin.categories.edit_category')->with(compact('categoriesDetails', 'levels'));
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
