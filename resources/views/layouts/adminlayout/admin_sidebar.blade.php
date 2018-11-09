@@ -2,10 +2,17 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
         <li class="active"><a href="{{url('admin/dashboard')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Categories</span> <span class="label label-important">3</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Categories</span></a>
             <ul>
                 <li><a href="{{url('admin/view_categories')}}"><i class="icon icon-th-list"></i> <span>Category List</span></a></li>
                 <li><a href="{{url('admin/add_category')}}"><i class="icon icon-plus-sign"></i><span>Add category</span></a></li>
+
+            </ul>
+        </li>
+         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Products</span></a>
+            <ul>
+                <li><a href="{{url('admin/view_products')}}"><i class="icon icon-th-list"></i> <span>Product List</span></a></li>
+                <li><a href="{{url('admin/add_product')}}"><i class="icon icon-plus-sign"></i><span>Add Product</span></a></li>
 
             </ul>
         </li>
