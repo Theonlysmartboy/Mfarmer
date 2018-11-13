@@ -32,10 +32,7 @@
                                 <label class="control-label">Category </label>
                                 <div class="controls">
                                     <select name="category_id" style="width: 220px;">
-                                        <option >Select Category</option>
-                                        @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
+                                        <?php echo $categories_dropdown?>
                                     </select>
                                 </div>
                             </div>
