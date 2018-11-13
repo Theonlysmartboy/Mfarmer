@@ -65,6 +65,11 @@
                                 <div class="controls">
                                     <input type="text" name="product_cost" id="product_cost">
                                 </div>
+                                <div class="control-group">
+                                <label class="control-label">Image</label>
+                                <div class="controls">
+                                    <input type="file" name="image" id="image">
+                                </div>
                             </div>
                             <div class="form-actions">
                                 <input type="submit" value="Add Product" class="btn btn-success">
