@@ -27,7 +27,7 @@
                         <h5>Add Product Form</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post" action="{{url('admin/add_product')}}" name="add_product" id="add_product" novalidate="novalidate">{{ csrf_field() }}
+                        <form class="form-horizontal" method="post" action="{{url('admin/add_product')}}" name="add_product" id="add_product" novalidate="novalidate" enctype="multipart/form-data">{{ csrf_field() }}
                             <div class="control-group">
                                 <label class="control-label">Category </label>
                                 <div class="controls">
@@ -65,10 +65,11 @@
                                 <div class="controls">
                                     <input type="text" name="product_cost" id="product_cost">
                                 </div>
+                            </div>
                                 <div class="control-group">
                                 <label class="control-label">Image</label>
                                 <div class="controls">
-                                    <input type="file" name="image" id="image">
+                                    <input type="file" name="product_image" id="product_image">
                                 </div>
                             </div>
                             <div class="form-actions">
@@ -79,7 +80,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @endsection
