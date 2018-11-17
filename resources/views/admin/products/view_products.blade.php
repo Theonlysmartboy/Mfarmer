@@ -46,11 +46,11 @@
                                 <tr class="gradeX">
                                     <td class="text-center">{{ $product->id }}</td>
                                     <td class="text-center">{{ $product->category_id }}</td>
-                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->product_name }}</td>
                                     <td>{{ $product->product_code }}</td>
                                     <td>{{ $product->product_color }}</td>
                                     <td class="text-center">{{ $product->description }}</td>
-                                    <td class="text-center"><td>{{ $product->price }}</td></td>
+                                    <td class="text-center">{{ $product->price }}</td>
                                     <td>{{ $product->image }}</td>
                                     <td><a href="#" class="btn btn-success btn-mini">View <i class="icon icon-eye-open"></i></a> | 
                                         <a href="{{url('admin/edit_category/'.$product->id)}}" class="btn btn-warning btn-mini">Edit <i class="icon icon-edit"></i></a> | 
