@@ -37,8 +37,8 @@ class ProductsController extends Controller {
                         $small_image_path = 'images/frontend_images/products/small/' . $filename;
                         //Resize images
                         Image::make($image_tmp)->save($larger_image_path);
-                        Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
-                        Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
+                        Image::make($image_tmp)->resize(200, 200)->save($medium_image_path);
+                        Image::make($image_tmp)->resize(100, 100)->save($small_image_path);
                         //Store the image name in the products table
                         $product->image = $filename;
                     }
@@ -63,7 +63,12 @@ class ProductsController extends Controller {
 
     public function viewProducts() {
         if (Session::has('adminSession')) {
-            $products = Product::get();
+            $allProducts = Product::get();
+            $products = json_decode(json_encode($allProducts));
+            foreach ($products as $key => $val) {
+                $category_name = Category::where(['id' => $val->category_id])->first();
+                $products[$key]->category_name = $category_name->name;
+            }
             return view('admin.products.view_products')->with(compact('products'));
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');

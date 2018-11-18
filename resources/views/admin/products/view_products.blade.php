@@ -45,13 +45,13 @@
                                 @foreach($products as $product)
                                 <tr class="gradeX">
                                     <td class="text-center">{{ $product->id }}</td>
-                                    <td class="text-center">{{ $product->category_id }}</td>
+                                    <td class="text-center">{{ $product->category_name }}</td>
                                     <td>{{ $product->product_name }}</td>
                                     <td>{{ $product->product_code }}</td>
                                     <td>{{ $product->product_color }}</td>
                                     <td class="text-center">{{ $product->description }}</td>
                                     <td class="text-center">{{ $product->price }}</td>
-                                    <td>{{ $product->image }}</td>
+                                    <td><img src="{{asset('images/frontend_images/products/small/'. $product->image )}}"/></td>
                                     <td><a href="#" class="btn btn-success btn-mini">View <i class="icon icon-eye-open"></i></a> | 
                                         <a href="{{url('admin/edit_category/'.$product->id)}}" class="btn btn-warning btn-mini">Edit <i class="icon icon-edit"></i></a> | 
                                         <a rel="{{$product->id}}" rel1="delete_category" href="javascript:" class="btn btn-danger btn-mini deleteCategory">Delete <i class="icon icon-trash"></i></a></td>
