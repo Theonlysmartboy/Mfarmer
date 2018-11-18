@@ -51,7 +51,11 @@
                                     <td>{{ $product->product_color }}</td>
                                     <td class="text-center">{{ $product->description }}</td>
                                     <td class="text-center">{{ $product->price }}</td>
-                                    <td><img src="{{asset('images/frontend_images/products/small/'. $product->image )}}"/></td>
+                                    <td>
+                                    @if(!empty($product->image))
+                                    <img src="{{asset('images/frontend_images/products/small/'. $product->image )}}" style="width:50px;"/>
+                                   @endif
+                                   </td>
                                     <td><a href="#" class="btn btn-success btn-mini">View <i class="icon icon-eye-open"></i></a> | 
                                         <a href="{{url('admin/edit_category/'.$product->id)}}" class="btn btn-warning btn-mini">Edit <i class="icon icon-edit"></i></a> | 
                                         <a rel="{{$product->id}}" rel1="delete_category" href="javascript:" class="btn btn-danger btn-mini deleteCategory">Delete <i class="icon icon-trash"></i></a></td>
