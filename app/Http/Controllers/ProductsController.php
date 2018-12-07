@@ -46,6 +46,7 @@ class ProductsController extends Controller {
                 $product->save();
                 return redirect('/admin/view_products')->with('flash_message_success', 'Product added Successfully');
             }
+            //Categfories drop down start
             $categories = Category::where(['parent_id' => 0])->get();
             $categories_dropdown = "<option selected disabled>Select<option>";
             foreach ($categories as $cat) {
@@ -55,12 +56,14 @@ class ProductsController extends Controller {
                     $categories_dropdown .= "<option value='" . $sub_cat->id . "'>&nbsp;--&nbsp;" . $sub_cat->name . "<option>";
                 }
             }
+            //Categories dropdown end
             return view('admin.products.add_product')->with(compact('categories_dropdown'));
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
     }
 
+//Function to dosplay the products
     public function viewProducts() {
         if (Session::has('adminSession')) {
             $allProducts = Product::get();
@@ -70,6 +73,36 @@ class ProductsController extends Controller {
                 $products[$key]->category_name = $category_name->name;
             }
             return view('admin.products.view_products')->with(compact('products'));
+        } else {
+            return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
+        }
+    }
+
+    public function editProduct(Request $request, $id = null) {
+        if (Session::has('adminSession')) {
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+               Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['product_desc'], 'price' => $data['product_cost']]);
+                return redirect('/admin/view_products')->with('flash_message_success', 'Product updated Successfully');
+            }
+            $productDetails = Product::where(['id' => $id])->first();
+            //Categfories drop down start
+            $categories = Category::where(['parent_id' => 0])->get();
+            $categories_dropdown = "<option selected disabled>Select<option>";
+            foreach ($categories as $cat) {
+                $categories_dropdown .= "<option value='" . $cat->id . "'>" . $cat->name . "<option>";
+                $sub_categories = Category::where(['parent_id' => $cat->id])->get();
+                foreach ($sub_categories as $sub_cat) {
+                    if ($sub_cat->id == $productDetails->category_id) {
+                        $selected = "selected";
+                    } else {
+                        $selected = "";
+                    }
+                    $categories_dropdown .= "<option value='" . $sub_cat->id . "'" . $selected . ">&nbsp;--&nbsp;" . $sub_cat->name . "<option>";
+                }
+            }
+            //Categories dropdown end
+            return view('admin.products.edit_product')->with(compact('productDetails', 'categories_dropdown'));
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
