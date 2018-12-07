@@ -82,7 +82,9 @@ class ProductsController extends Controller {
         if (Session::has('adminSession')) {
             if ($request->isMethod('post')) {
                 $data = $request->all();
-               Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['product_desc'], 'price' => $data['product_cost']]);
+                Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'],
+                    'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['product_desc'],
+                    'price' => $data['product_cost']]);
                 return redirect('/admin/view_products')->with('flash_message_success', 'Product updated Successfully');
             }
             $productDetails = Product::where(['id' => $id])->first();

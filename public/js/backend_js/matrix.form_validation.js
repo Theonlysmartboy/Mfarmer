@@ -142,11 +142,11 @@ $(document).ready(function () {
             product_cost: {
                 required: true,
                 number: true
-            },
+            }
             /*product_image: {
                 required: true
-            }
-        },*/
+            }*/
+        },
         errorClass: "help-inline",
         errorElement: "span",
         highlight: function (element, errorClass, validClass) {
