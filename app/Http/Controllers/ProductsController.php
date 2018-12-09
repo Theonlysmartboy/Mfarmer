@@ -105,8 +105,8 @@ class ProductsController extends Controller {
                     $description = '_';
                 }
                 Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'],
-                    'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' =>$description,
-                    'price' => $data['product_cost'],'image'=>$filename]);
+                    'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $description,
+                    'price' => $data['product_cost'], 'image' => $filename]);
                 return redirect('/admin/view_products')->with('flash_message_success', 'Product updated Successfully');
             }
             $productDetails = Product::where(['id' => $id])->first();
@@ -131,8 +131,16 @@ class ProductsController extends Controller {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
     }
-    public function deleteProduct(){
-        
+
+    public function deleteProduct($id = null) {
+        if (Session::has('adminSession')) {
+            if (!empty($id)) {
+                Product::where(['id' => $id])->delete();
+                return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');
+            }
+        } else {
+            return redirect('/admin')->with('flash_message_error', 'Access Denied! Please Login first');
+        }
     }
 
 }

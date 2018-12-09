@@ -127,7 +127,7 @@ $(document).ready(function () {
             $(element).parents('.control-group').addClass('success');
         }
     });
-      // edit product form Validation
+    // edit product form Validation
     $("#edit_product").validate({
         rules: {
             product_name: {
@@ -144,8 +144,8 @@ $(document).ready(function () {
                 number: true
             }
             /*product_image: {
-                required: true
-            }*/
+             required: true
+             }*/
         },
         errorClass: "help-inline",
         errorElement: "span",
@@ -218,6 +218,23 @@ $(document).ready(function () {
         var deleteFunction = $(this).attr('rel1');
         swal({
             title: "Are you sure You want to delete this category?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FF0000",
+            cancelButtonColor: "#87CEFA",
+            confirmButtonText: "Yes, delete it!"
+        },
+                function () {
+                    window.location.href = "/admin/" + deleteFunction + "/" + id;
+                });
+    });
+    //Function to delete Product
+    $(".deleteProduct").click(function () {
+        var id = $(this).attr('rel');
+        var deleteFunction = $(this).attr('rel1');
+        swal({
+            title: "Are you sure You want to delete this Product?",
             text: "You won't be able to revert this!",
             type: "warning",
             showCancelButton: true,
