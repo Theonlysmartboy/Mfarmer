@@ -82,9 +82,31 @@ class ProductsController extends Controller {
         if (Session::has('adminSession')) {
             if ($request->isMethod('post')) {
                 $data = $request->all();
+                //upload image
+                if ($request->hasFile('product_image')) {
+                    $image_tmp = Input::file('product_image');
+                    if ($image_tmp->isValid()) {
+                        $extension = $image_tmp->getClientOriginalExtension();
+                        $filename = rand(1, 999999) . '.' . $extension;
+                        $larger_image_path = 'images/frontend_images/products/large/' . $filename;
+                        $medium_image_path = 'images/frontend_images/products/medium/' . $filename;
+                        $small_image_path = 'images/frontend_images/products/small/' . $filename;
+                        //Resize images
+                        Image::make($image_tmp)->save($larger_image_path);
+                        Image::make($image_tmp)->resize(200, 200)->save($medium_image_path);
+                        Image::make($image_tmp)->resize(100, 100)->save($small_image_path);
+                    }
+                } else {
+                    $filename = $data['current_image'];
+                }
+                if (!empty($data['product_desc'])) {
+                    $description = $data['product_desc'];
+                } else {
+                    $description = '_';
+                }
                 Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'],
-                    'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' => $data['product_desc'],
-                    'price' => $data['product_cost']]);
+                    'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'description' =>$description,
+                    'price' => $data['product_cost'],'image'=>$filename]);
                 return redirect('/admin/view_products')->with('flash_message_success', 'Product updated Successfully');
             }
             $productDetails = Product::where(['id' => $id])->first();
@@ -108,6 +130,9 @@ class ProductsController extends Controller {
         } else {
             return redirect('/admin')->with('flash_message_error', 'Access denied! Please Login first');
         }
+    }
+    public function deleteProduct(){
+        
     }
 
 }

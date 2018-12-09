@@ -69,7 +69,9 @@
                             <div class="control-group">
                                 <label class="control-label">Image</label>
                                 <div class="controls">
-                                    <input type="file" name="product_image" id="product_image" value="{{$productDetails->image}}>
+                                    <img src="{{asset('images/frontend_images/products/small/'.$productDetails->image)}}"/>
+                                    <input type="file" name="product_image" id="product_image">
+                                    <input type="hidden" name="current_image" value="{{$productDetails->image}}"
                                 </div>
                             </div>
                             <div class="form-actions">
