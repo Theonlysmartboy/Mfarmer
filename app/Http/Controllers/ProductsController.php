@@ -135,6 +135,23 @@ class ProductsController extends Controller {
     public function deleteProduct($id = null) {
         if (Session::has('adminSession')) {
             if (!empty($id)) {
+                $productImage = Product::where(['id' => $id])->first();
+                //Get product image paths
+                $large_image_path = 'images/frontend_images/products/large/';
+                $medium_image_path = 'images/frontend_images/products/medium/';
+                $small_image_path = 'images/frontend_images/products/small/';
+                //Delete the large image if exists
+                if(file_exists($large_image_path.$productImage->image)){
+                    unlink($large_image_path.$productImage->image);
+                }
+                //Delete the medium image if exists
+                if(file_exists($medium_image_path.$productImage->image)){
+                    unlink($medium_image_path.$productImage->image);
+                }
+                //Delete the small image if exists
+                if(file_exists($small_image_path.$productImage->image)){
+                    unlink($small_image_path.$productImage->image);
+                }
                 Product::where(['id' => $id])->delete();
                 return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully');
             }
